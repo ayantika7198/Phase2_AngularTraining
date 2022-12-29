@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+
+    <body>
+
+<div id="container">
+        <div class="card">
+            <div class="card-header" style="height: 50px; background-color: rebeccapurple; color: white; font-size: 30px; font-weight: bold;">
+              Trustee Form
+            </div>
+            <div class="card-body">
+              <form autocomplete="false" #trusteeForm="ngForm" name="trusteeForm" (ngSubmit)="onSubmit(trusteeForm)">
+                <div class="row mb-3">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label">ID</label>
+                    <div class="col-sm-10">
+                      <input type="text" #id="ngModel" name="id" class="form-control" id="colFormLabel" placeholder="Enter Your ID" required pattern="T[0-9]{3}" ngModel>
+                    </div>
+                    <div *ngIf="!id?.valid && (id?.dirty || id?.touched)" class="error">
+                        <div *ngIf="id.errors?.['required']">
+                          ID is required
+                     </div>
+                     <div *ngIf="id.errors?.['pattern']">
+                         Please Provide ID in proper pattern
+                    </div>
+                 
+                 
+                     </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label">NAME</label>
+                    <div class="col-sm-10">
+                      <input type="text" #name="ngModel" name="name" class="form-control" id="colFormLabel" placeholder="Enter Your Name" required pattern="[A-za-z]*" ngModel>
+                    </div>
+
+                    <div *ngIf="!name?.valid && (name?.dirty || name?.touched)" class="error">
+                        <div *ngIf="name.errors?.['required']">
+                          Name is required
+                     </div>
+                     <div *ngIf="name.errors?.['pattern']">
+                         Please Provide Name in proper pattern
+                    </div>
+                 
+                 
+                     </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label">GENDER</label>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" value="male" #gender="ngModel" ngModel id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                              MALE
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input"  type="radio" name="gender" value="female" #gender="ngModel" ngModel id="flexRadioDefault2" >
+                            <label class="form-check-label" for="flexRadioDefault2">
+                              FEMALE
+                            </label>
+                          </div>
+                      </div>
+                     
+                  </div>
+                  <div class="row mb-3">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label">COUNTRY OF RESIDENCE</label>
+                    <div class="col-sm-10">
+                    <select (click)="changeCountry()" class="form-select" #country="ngModel" name="country" aria-label="Default select example" required ngModel>
+                        <option  [ngValue]="c.id" *ngFor="let c of countries">{{c.name}}</option>
+                        
+                      </select>
+                      </div>
+                      <div *ngIf="!country?.valid && (country?.dirty || country?.touched)" class="error">
+                        <div *ngIf="country.errors?.['required']">
+                          Country is required
+                     </div>
+                   
+                 
+                 
+                     </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label">PASSPORT ID</label>
+                    <div class="col-sm-10">
+                      <input type="text" #passport="ngModel" name="passport" class="form-control" id="colFormLabel" required placeholder="Enter Your Passport ID" ngModel>
+                    </div>
+                  </div>
+                  <div *ngIf="!passport?.valid && (passport?.dirty || passport?.touched)" class="error">
+                    <div *ngIf="passport.errors?.['required']">
+                      Passport is required
+                 </div>
+               
+             
+             
+                 </div>
+
+                  <div class="row mb-3">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label">INSURANCE DATE</label>
+                    <div class="col-sm-10">
+                      <input type="date" value="2022-10-08" #date="ngModel" max="2022-12-29" name="date" class="form-control" id="colFormLabel" required ngModel>
+                    </div>
+                  </div>
+                  <div *ngIf="!date?.valid && (date?.dirty || date?.touched)" class="error">
+                    <div *ngIf="date.errors?.['required']">
+                      Insurance Date is required
+                 </div>
+                 <div *ngIf="date.errors?.['max']">
+                    Please Give Correct Insurance Date
+               </div>
+               
+             
+             
+                 </div>
+                  <div class="row mb-3">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label">NUMBER OF DEPENDENTS</label>
+                    <div class="col-sm-10">
+                      <input type="number" #dependent="ngModel" min=1 max=10 name="dependent" class="form-control" required id="colFormLabel" placeholder="Enter Your Number Of Dependents" ngModel>
+                    </div>
+                  </div>
+                  <div *ngIf="!dependent?.valid && (dependent?.dirty || dependent?.touched)" class="error">
+                    <div *ngIf="dependent.errors?.['required']">
+                      Dependent is required
+                 </div>
+                 <div *ngIf="dependent.errors?.['min']">
+                    Minimum Dependent is 1
+               </div>
+               <div *ngIf="dependent.errors?.['max']">
+                    Maximum Dependent can be 10
+           </div>
+               
+             
+             
+                 </div>
+
+                  <button type="submit" class="btn btn-primary" [disabled]="!trusteeForm.valid">SUBMIT</button>
+                  <button type="reset" class="btn btn-warning" style="margin-left: 30px;">RESET</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,12 @@
+.container{
+    width: 80%;
+    margin:auto;
+    padding: 50px;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 25px;
+}
+body{
+    background: linear-gradient(to right, #74ebd5, #acb6e5);
+    
+}

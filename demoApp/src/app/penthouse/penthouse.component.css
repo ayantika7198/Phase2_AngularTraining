@@ -1,0 +1,10 @@
+p{
+    background-color: cyan;
+    color: green;
+    border: 1px solid;
+    text-align: center;
+    height: 40px;
+    font-size: 30px;
+    margin:10px;
+    border-radius: 25px;
+}

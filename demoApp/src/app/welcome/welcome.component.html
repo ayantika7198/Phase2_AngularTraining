@@ -1,0 +1,17 @@
+<h3 extrastyling>Adding green in directive</h3>
+
+<button (click)="logValue()">Print</button>
+<h2>Welcome {{name}} into Welcome Component.</h2>
+
+<p>{{name | repeatData:3 }}</p>
+<p>{{title | transformData:'-'}}</p>
+<input type="text" [(ngModel)]="num" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
+
+<h1 id="msg">{{num}}</h1>
+<h2 id="msg2">{{name}}</h2>
+<div [ngSwitch]='num'>
+    <div *ngSwitchCase="1">One</div>
+    <div *ngSwitchCase="2">Two</div>
+    <div *ngSwitchCase="3">Three</div>
+    <div *ngSwitchCase="4">Four</div>
+</div>

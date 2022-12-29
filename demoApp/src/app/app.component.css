@@ -1,0 +1,30 @@
+h1{
+    background-color: antiquewhite;
+    color:brown;
+    border: 1px solid;
+    border-radius: 20px;
+    text-align: center;
+}
+#container{
+    display: flex;
+}
+
+.animal{
+    width: 80%;
+    margin: auto;
+}
+.cont{
+    display: flex;
+}
+#div1{
+    width: 70%;
+}
+#div2{
+    width: 30%;
+    padding: 20px;
+    height: 600px;
+    background-color: coral;
+}
+body{
+    padding: 0px;
+}

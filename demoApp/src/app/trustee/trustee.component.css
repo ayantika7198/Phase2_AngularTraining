@@ -1,0 +1,12 @@
+.error{
+    background-color: red;
+    color: white;
+    padding-left: 50px;
+}
+#container{
+    margin:50px;
+    padding:50px;
+    background-color: pink;
+    border:none;
+    border-radius: 25px;
+}
