@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-book',
@@ -20,10 +20,32 @@ export class BookComponent {
       email:['ayantika@gmail.com',[Validators.required, Validators.email]]
      
      }),
-     dateofpublishing:['2020-09-09',[Validators.required]]
+     dateofpublishing:['2020-09-09',[Validators.required]],
+     publishers:this.formBuilder.array([])
 
   })
 }
+
+bookPublishers():FormArray{
+  return this.bookForm.get('publishers') as FormArray;
+}
+
+newPublisher():FormGroup{
+  return this.formBuilder.group({
+    pubname:['',[Validators.required, Validators.minLength(5),Validators.maxLength(20)]],
+    city:''
+  });
+}
+
+addPublisher(){
+  this.bookPublishers().push(this.newPublisher());
+}
+
+removePublisher(pubIndex:number){
+  this.bookPublishers().removeAt(pubIndex);
+}
+
+
 
 get id():any{
   return this.bookForm.get("id");
@@ -46,7 +68,7 @@ get dateofpublishing():any{
 }
 
 onSubmit():void{
-  console.log(this.bookForm);
+  console.log(this.bookForm.value);
 }
 
 

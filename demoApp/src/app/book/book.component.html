@@ -1,7 +1,9 @@
+<appnav></appnav>
 <html>
     <head></head>
 
     <body>
+
       <div class="container">
         <div *ngIf="bookForm.valid" class="alert alert-success" role="alert">
           Congratulations!!! You have correctly given all the form inputs.
@@ -111,7 +113,37 @@
               
                       </div>
                       </div>
+
+            <div formArrayName="publishers">
+              <div *ngFor="let pub of bookPublishers().controls; let pubIndex=index;">
+                <div [formGroupName]="pubIndex">
+                  Publisher {{pubIndex+1}}:
+                  <div class="row mb-3">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label">PUBLISHER NAME</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="colFormLabel" name="pubname" formControlName="pubname" placeholder="Enter Name Of Publisher">
+                    </div>
+                  
+                  
+                      </div>
+          
+                 
+                  <div class="row mb-3">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label">CITY OF PUBLISHING</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="colFormLabel" name="city" formControlName="city" placeholder="Enter City Of Publishing">
+                    </div>
+                  </div>
+                  <button class="btn btn-warning" (click)="removePublisher(pubIndex)">REMOVE PUBLISHER</button>
+
+                </div>
+              </div>
+
             </div>
+
+            <button type="button" class="btn btn-success" (click)="addPublisher()" style="margin-top:10px;">ADD PUBLISHER</button>
+            </div>
+
             <div style="text-align: center; padding: 20px;">
             <button type="submit" class="btn btn-primary" [disabled]="!bookForm.valid">SUBMIT</button>
             <button type="reset" class="btn btn-warning" style="margin-left: 30px;">RESET</button>

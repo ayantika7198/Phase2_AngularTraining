@@ -24,6 +24,11 @@ import { InMemoryEventDbService } from 'shared/inmemoryeventdb.service';
 import { ExtrastylingDirective } from './extrastyling.directive';
 import { TrusteeComponent } from './trustee/trustee.component';
 import { BookComponent } from './book/book.component';
+import { StudentsComponent } from './students/students.component';
+import { AppnavComponent } from './appnav/appnav.component';
+import { ApphomeComponent } from './apphome/apphome.component';
+import { AppaboutComponent } from './appabout/appabout.component';
+import { AnimalDetailsComponent } from './animals/animal-details.component';
 
 
 
@@ -47,7 +52,12 @@ import { BookComponent } from './book/book.component';
    EventDetailsComponent,
    ExtrastylingDirective,
    TrusteeComponent,
-   BookComponent
+   BookComponent,
+   StudentsComponent,
+   AppnavComponent,
+   ApphomeComponent,
+   AppaboutComponent,
+   AnimalDetailsComponent
   ],
   imports: [
     BrowserModule,

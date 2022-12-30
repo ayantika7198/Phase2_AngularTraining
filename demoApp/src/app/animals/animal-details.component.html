@@ -1,0 +1,14 @@
+<div class="card" class="anmi">
+    <div class="card-header" style="height: 60px; background-color:purple; color: white; font-size: 40px; font-weight: bold;">
+      {{anm?.name}} Details
+    </div>
+    <div class="card-body" style="background-color: pink; padding: 20px;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Animal Name: {{anm?.name}}</li>
+      <li class="list-group-item">Animal Age: {{anm?.age}}</li>
+      <li class="list-group-item">Animal Description: {{anm?.description}}</li>
+      <li class="list-group-item"><img src="{{anm?.imageUrl}}" width="200px" height="150px"/></li>
+    </ul>
+    <button class="btn btn-warning" (click)="back()" style="margin:10px;">BACK</button>
+    </div>
+  </div>
