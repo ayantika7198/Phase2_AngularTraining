@@ -1,4 +1,5 @@
 import { Component , OnInit} from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Animal } from './animal';
 import { AnimalService } from './animalservice';
 
@@ -10,8 +11,11 @@ import { AnimalService } from './animalservice';
 export class AnimalListComponent implements OnInit{
 
   animals:Animal[]=[];
+  //sub!=Subscription;
 
   constructor(private animalService:AnimalService){}
+
+
   ngOnInit(): void {
     this.animals=this.animalService.getAnimals();
     this.filteredAnimals=this.animals;

@@ -35,7 +35,7 @@
                         <tr *ngFor="let product of filteredProducts">
                         
                             <td (click)="print(product)">{{product.id}}</td>
-                            <td>{{product.name | uppercase}}</td>
+                            <td (click)="productSelected(product)">{{product.name | uppercase}}</td>
                             <td>{{product.price | currency:'INR'}}</td>
                             <td><img src="{{product.imageUrl}}" width="50px" height="50px"/></td>
                             <td>{{product.category}}</td>
@@ -49,5 +49,7 @@
                   <button class="btn btn-primary" (click)="newProduct()">Add New Product</button>
             </div>
           </div>
+
+          <router-outlet></router-outlet>
     </body>
 </html>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoggingService } from 'shared/logging.service';
 import { productService } from 'shared/productService';
@@ -17,14 +18,19 @@ export class ProductListComponent implements OnInit,OnDestroy{
 
   products:IProduct[]=[];
   filteredProducts:IProduct[]=[];
+  selectedProduct!:IProduct | null;
+  href:string='';
+
+  @Output() OnProductSelection:EventEmitter<IProduct>=new EventEmitter<IProduct>();
 
   constructor(private productService:productService,
-    private loggingService:LoggingService){}
+    private loggingService:LoggingService, private router:Router){}
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
   
   ngOnInit(): void {
+    this.href=this.router.url;
 
     this.sub=this.productService.getProducts().subscribe(
       (response)=>{
@@ -68,6 +74,11 @@ export class ProductListComponent implements OnInit,OnDestroy{
       }
     )
     //this.filteredProducts=this.products;
+
+    this.productService.selectedProductChanges$.
+       subscribe(currentProduct=>{this.selectedProduct=currentProduct;
+       console.log(this.selectedProduct);
+       });
   }
 
   //filteredProducts:IProduct[]=[];
@@ -77,15 +88,20 @@ export class ProductListComponent implements OnInit,OnDestroy{
   }
 selectedP!:IProduct|null;
   print(product:IProduct):void{
-    this.selectedP=this.productService.changeSelectedProduct(product);
-    console.log(this.selectedP);
+    
+    console.log(product);
   }
 newP!:IProduct;
+
+
   newProduct():void{
   
-    this.newP=this.productService.newProduct();
+    console.log('in new product');
 
-    console.log(this.newP);
+  this.productService.changeSelectedProduct(this.productService.newProduct());
+  console.log('back to newProduct from service ');
+
+   this.router.navigate([this.href,'addProduct']);
   }
 
   
@@ -134,6 +150,10 @@ set filCats(val:string){
   @Output() productClicked:EventEmitter<IProduct> =new EventEmitter<IProduct>();
 
   //pros:any='';
+
+  productSelected(product:IProduct):void{
+    this.productService.changeSelectedProduct(product);
+   }
 
   onClick(prot:IProduct):void{
     //this.pros.push()

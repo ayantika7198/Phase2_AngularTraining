@@ -29,6 +29,9 @@ import { AppnavComponent } from './appnav/appnav.component';
 import { ApphomeComponent } from './apphome/apphome.component';
 import { AppaboutComponent } from './appabout/appabout.component';
 import { AnimalDetailsComponent } from './animals/animal-details.component';
+import { ProductAddComponent } from './products/product-add.component';
+import { FlowerListComponent } from './flowers/flower-list.component';
+import { LoginComponent } from './users/login.component';
 
 
 
@@ -57,7 +60,10 @@ import { AnimalDetailsComponent } from './animals/animal-details.component';
    AppnavComponent,
    ApphomeComponent,
    AppaboutComponent,
-   AnimalDetailsComponent
+   AnimalDetailsComponent,
+   ProductAddComponent,
+   FlowerListComponent,
+   LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +74,6 @@ import { AnimalDetailsComponent } from './animals/animal-details.component';
     HttpClientModule,
     InMemoryWebApiModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryEventDbService)
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
