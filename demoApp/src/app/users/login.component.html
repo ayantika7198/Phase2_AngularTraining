@@ -1,14 +1,12 @@
-<div class="card"><div class="card-header">
-    {{pageTitle}}
-</div>
 
+<!--
 <div class="card-body">
 <form  #loginForm="ngForm" name="loginForm" (ngSubmit)="onSubmit(loginForm)">
 
 <div class="form-group">
     <p>
-    <label for="userName">User Name</label>
-    <input type="text" name="userName" id="userName"
+    <label for="username">User Name</label>
+    <input type="text" name="username" id="username"
     #username="ngModel"
     class="form-control"
     required ngModel
@@ -19,7 +17,7 @@
 
 <p>
     <label for="password">password</label>
-    <input type="text" name="password" id="password"
+    <input type="password" name="password" id="password"
     #password="ngModel" 
     class="form-control"
     required ngModel
@@ -35,8 +33,59 @@
 </form>
 
 
-</div>
+</div>-->
+
+<html>
+  <head></head>
+  <body>
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <div class="mb-md-5 mt-md-4 pb-5">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                <form  #loginForm="ngForm" name="loginForm" (ngSubmit)="onSubmit(loginForm)">
+  
+                <div class="form-outline form-white mb-4">
+                  <input type="text" id="username" name="username" #username="ngModel" ngModel required class="form-control form-control-lg" />
+                  <label class="form-label" for="typeEmailX">Username</label>
+                </div>
+  
+                <div class="form-outline form-white mb-4">
+                  <input type="password" id="password" name="password" #password="ngModel" ngModel required class="form-control form-control-lg" />
+                  <label class="form-label" for="typePasswordX">Password</label>
+                </div>
+  
+               
+  
+                <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!loginForm.valid">Login</button>
+                
+                <div style="margin-top:20px">
+                  <button class="btn btn-danger" routerLink='/about'>Cancel</button>
+                </div>
+              
+              </form>
+  
+                
+  
+              </div>
+  
+              
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
 
 
 
-</div>
+</body>
+</html>

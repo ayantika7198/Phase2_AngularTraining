@@ -4,5 +4,5 @@ export interface IFlower{
     place:string,
     price:number,
     image:string,
-    Quantity: number
+    quantity: number
 }

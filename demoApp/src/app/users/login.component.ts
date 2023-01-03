@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "./authservice";
@@ -12,6 +12,7 @@ import { AuthService } from "./authservice";
 })
 export class LoginComponent implements OnInit {
 pageTitle:string='Log In';
+@ViewChild('loginForm',{})loginForm!:NgForm;
   constructor(private authService:AuthService,private router:Router) { }
 
   ngOnInit(): void {
@@ -24,6 +25,10 @@ pageTitle:string='Log In';
     if(loginForm && loginForm.valid){
       const username = loginForm.form.value.username;
       const password=loginForm.form.value.password;
+
+      // username=this.loginForm.controls['username'].get;
+
+      console.log(username);
    
       this.authService.login(username,password);
 

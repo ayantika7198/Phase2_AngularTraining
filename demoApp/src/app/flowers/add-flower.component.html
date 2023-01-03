@@ -1,0 +1,50 @@
+<div class="container">
+<div class="card text-center">
+    <div class="card-header">
+      ADD FLOWER
+    </div>
+    <div class="card-body">
+        <form [formGroup]="addFlower" (ngSubmit)="saveFlower(flower)">
+        <div class="form-group row">
+            <label for="id" class="col-sm-2 col-form-label col-form-label-lg">FLOWER ID</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-lg" id="id" name="id" formControlName="id" placeholder="Enter Flower ID">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label col-form-label-lg">FLOWER NAME</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-lg" id="name" name="name" formControlName="name" placeholder="Enter Flower Name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="place" class="col-sm-2 col-form-label col-form-label-lg">PLACE</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-lg" id="place" name="place" formControlName="place" placeholder="Enter Place">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="price" class="col-sm-2 col-form-label col-form-label-lg">FLOWER PRICE</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control form-control-lg" id="price" name="price" formControlName="price" placeholder="Enter Flower Price">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="image" class="col-sm-2 col-form-label col-form-label-lg">FLOWER IMAGE</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-lg" id="image" name="image" formControlName="image" placeholder="Enter Flower Image URL">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="quantity" class="col-sm-2 col-form-label col-form-label-lg">QUANTITY AVAILABLE</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control form-control-lg" id="quantity" name="quantity" formControlName="quantity" placeholder="Enter Quantity of Flowers Available">
+            </div>
+          </div>
+
+          <button [disabled]='!addFlower.valid ||!addFlower.dirty' class="btn btn-success">SAVE</button>
+          </form>
+    </div>
+    
+  </div>
+  </div>

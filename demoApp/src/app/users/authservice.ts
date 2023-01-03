@@ -32,6 +32,8 @@ export class AuthService{
             password,
             isAdmin:false 
     };
+
+    console.log(this.currentUser.username);
 }
 
     }

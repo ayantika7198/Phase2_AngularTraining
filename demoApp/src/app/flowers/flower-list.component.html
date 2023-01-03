@@ -1,1 +1,46 @@
-<p>flower-list works!</p>
+<appnav></appnav>
+<div class="card">
+    <div class="card-header text-center">
+      FLOWER DETAILS
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">PLACE</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">IMAGE</th>
+                <th scope="col">QUANTITY AVAILABLE</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let flow of flowers">
+                <th scope="row">{{flow.id}}</th>
+                <td>{{flow.name}}</td>
+                <td>{{flow.price}}</td>
+                <td>{{flow.place}}</td>
+                <td><img [src]='flow.image' width='100px' height='80px'/></td>
+                <td>{{flow.quantity}}</td>
+                <td><button class="btn btn-warning" (click)="flowerSelected(flow)">EDIT</button></td>
+                <td><button class="btn btn-danger" (click)="deleteProduct(flow)">DELETE</button></td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <div class="card-footer">
+            <div class="col-md-4 text-right">
+              <button class="btn btn-primary"
+              (click)="newFlower()">Add a Flower</button>
+      
+            </div>
+          </div>
+    </div>
+    <div class="card-footer text-muted">
+      Updated 2 days ago
+    </div>
+  </div>
+  <router-outlet></router-outlet>

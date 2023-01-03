@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../users/authservice';
 
@@ -11,6 +12,8 @@ export class AppnavComponent {
 
   pageTitle:string='Online Shopping';
 
+ 
+
 get isLoggedIn():boolean{
   
   return this.authservice.isLoggedIn();
@@ -18,6 +21,8 @@ get isLoggedIn():boolean{
 
 
 get username():string{
+
+  console.log(this.authservice.currentUser?.username);
 
 if(this.authservice.currentUser)
 return this.authservice.currentUser?.username;

@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProductAddComponent } from './product-add.component';
 
@@ -8,7 +10,8 @@ describe('ProductAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductAddComponent ]
+      declarations: [ ProductAddComponent ],
+      imports:[FormsModule, ReactiveFormsModule,HttpClientTestingModule]
     })
     .compileComponents();
 

@@ -32,6 +32,9 @@ import { AnimalDetailsComponent } from './animals/animal-details.component';
 import { ProductAddComponent } from './products/product-add.component';
 import { FlowerListComponent } from './flowers/flower-list.component';
 import { LoginComponent } from './users/login.component';
+import { AddFlowerComponent } from './flowers/add-flower.component';
+import { EditFlowerComponent } from './flowers/edit-flower.component';
+import { GreetingComponent } from './greeting/greeting.component';
 
 
 
@@ -63,7 +66,10 @@ import { LoginComponent } from './users/login.component';
    AnimalDetailsComponent,
    ProductAddComponent,
    FlowerListComponent,
-   LoginComponent
+   LoginComponent,
+   AddFlowerComponent,
+   EditFlowerComponent,
+   GreetingComponent
   ],
   imports: [
     BrowserModule,

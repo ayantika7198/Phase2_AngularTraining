@@ -215,10 +215,57 @@ export class InMemoryEventDbService implements InMemoryDbService{
           }];
 
         const flowers:IFlower[]=[
-          
+          {
+            "id": "F001",
+            "name": "Rose",
+            "place": "Kolkata",
+            "price": 200,
+            "image": "../../assets/images/rose.jpg",
+            "quantity": 50
+          },
+          {
+            "id": "F002",
+            "name": "Daffodil",
+            "place": "Pune",
+            "price": 850,
+            "image": "../../assets/images/daffodil.jpg",
+            "quantity": 30
+          },
+          {
+            "id": "F003",
+            "name": "Lily",
+            "place": "Delhi",
+            "price": 500,
+            "image": "../../assets/images/lily.jpg",
+            "quantity": 60
+          },
+          {
+            "id": "F004",
+            "name": "Lotus",
+            "place": "Kolkata",
+            "price": 700,
+            "image": "../../assets/images/lotus.jpg",
+            "quantity": 100
+          },
+          {
+            "id": "F005",
+            "name": "Sunflower",
+            "place": "Ahmedabad",
+            "price": 900,
+            "image": "../../assets/images/sunflower.jpg",
+            "quantity": 90
+          },
+          {
+            "id": "F006",
+            "name": "Tulip",
+            "place": "Jaipur",
+            "price": 400,
+            "image": "../../assets/images/tulip.jpg",
+            "quantity": 80
+          }
         ]
 
-        return {events,animals, products};
+        return {events,animals,flowers, products};
     }
 
 }

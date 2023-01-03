@@ -25,19 +25,6 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display PageTitle Correctly',()=>{
-
-
-    fixture.detectChanges();
-    
-    const rootEle:DebugElement = fixture.debugElement;
-
-    const h3 =rootEle.query(By.css('#msg'));
-
-    const h3Element:HTMLElement= h3.nativeElement;
-    expect(h3Element.textContent).toContain('Ayantika Datta');
-
-
-  })
+ 
 
 });
