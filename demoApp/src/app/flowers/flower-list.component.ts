@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { FlowerService } from 'shared/flower.service';
+import { FlowerService } from 'src/app/shared/flower.service';
 import { IFlower } from './flower';
 
 @Component({
@@ -15,6 +15,8 @@ export class FlowerListComponent implements OnInit, OnDestroy{
   flowers:IFlower[]=[];
   errorMessage:string='';
   href:string='';
+  show:boolean=false;
+  testFlowers!:IFlower;
 
   constructor(private flowerService:FlowerService, private router:Router){}
 

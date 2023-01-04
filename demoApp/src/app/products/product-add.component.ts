@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { GenericValidator } from 'shared/GenericValidator';
-import { productService } from 'shared/productService';
+import { GenericValidator } from 'src/app/shared/GenericValidator';
+import { productService } from 'src/app/shared/productService';
 import { IProduct, Category } from './product';
 
 @Component({
@@ -12,6 +12,8 @@ import { IProduct, Category } from './product';
   styleUrls: ['./product-add.component.css']
 })
 export class ProductAddComponent implements OnInit ,OnDestroy {
+
+  @ViewChild(NgForm) ngForm!: NgForm;
   pageTitle='Edit Product';
   errorMessage='';
 
@@ -22,6 +24,7 @@ export class ProductAddComponent implements OnInit ,OnDestroy {
     private validationMessages!:{[key:string]:{[key:string]:string}};
 
     private genericValidator!:GenericValidator;
+  
 
     constructor(private formBuilder: FormBuilder,private router: Router, private productService:productService) {
 

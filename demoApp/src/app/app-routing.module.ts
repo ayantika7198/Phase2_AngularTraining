@@ -6,6 +6,7 @@ import { AnimalListComponent } from './animals/animal-list.component';
 import { AppaboutComponent } from './appabout/appabout.component';
 import { ApphomeComponent } from './apphome/apphome.component';
 import { BookComponent } from './book/book.component';
+import { CardListComponent } from './cards/cardlist.component';
 import { EventListComponent } from './events/event-list.component';
 import { AddFlowerComponent } from './flowers/add-flower.component';
 import { EditFlowerComponent } from './flowers/edit-flower.component';
@@ -47,7 +48,8 @@ const routes: Routes = [
   ]},
   {path:'login',component:LoginComponent},
   {path:'addFlower',component:AddFlowerComponent, canActivate:[AuthGuard]},
-  {path:'welcome',component:WelcomeComponent}
+  {path:'welcome',component:WelcomeComponent},
+  {path:'cardlist',component:CardListComponent}
 ];
 
 @NgModule({

@@ -20,7 +20,7 @@ import { EventListComponent } from './events/event-list.component';
 import { EventDetailsComponent } from './events/event-details.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { httpClientInMemBackendServiceFactory, HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryEventDbService } from 'shared/inmemoryeventdb.service';
+import { InMemoryEventDbService } from 'src/app/shared/inmemoryeventdb.service';
 import { ExtrastylingDirective } from './extrastyling.directive';
 import { TrusteeComponent } from './trustee/trustee.component';
 import { BookComponent } from './book/book.component';
@@ -35,6 +35,8 @@ import { LoginComponent } from './users/login.component';
 import { AddFlowerComponent } from './flowers/add-flower.component';
 import { EditFlowerComponent } from './flowers/edit-flower.component';
 import { GreetingComponent } from './greeting/greeting.component';
+import { CardComponent } from './cards/card.component';
+import { CardListComponent } from './cards/cardlist.component';
 
 
 
@@ -69,7 +71,9 @@ import { GreetingComponent } from './greeting/greeting.component';
    LoginComponent,
    AddFlowerComponent,
    EditFlowerComponent,
-   GreetingComponent
+   GreetingComponent,
+   CardComponent,
+   CardListComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ import { IFlower } from "src/app/flowers/flower";
 export class FlowerService{
 
     foundIndex:number=0;
-    private url="api/flowers";
+     url="api/flowers";
     flowers:IFlower[]=[];
 
     private selectedFlowerSource= new BehaviorSubject<IFlower | null >(null);

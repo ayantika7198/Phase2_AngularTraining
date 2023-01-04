@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { FlowerService } from 'shared/flower.service';
+import { FlowerService } from 'src/app/shared/flower.service';
 import { IFlower } from './flower';
 
 @Component({

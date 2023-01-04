@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LoggingService } from 'shared/logging.service';
-import { productService } from 'shared/productService';
+import { LoggingService } from 'src/app/shared/logging.service';
+import { productService } from 'src/app/shared/productService';
 import { Category, IProduct } from './product';
 
 @Component({

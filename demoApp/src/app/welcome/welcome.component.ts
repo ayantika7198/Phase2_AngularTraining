@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { LoggingService } from "shared/logging.service";
+import { LoggingService } from "src/app/shared/logging.service";
 
 @Component({
     selector: 'welcome',
