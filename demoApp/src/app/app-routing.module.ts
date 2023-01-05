@@ -49,7 +49,10 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'addFlower',component:AddFlowerComponent, canActivate:[AuthGuard]},
   {path:'welcome',component:WelcomeComponent},
-  {path:'cardlist',component:CardListComponent}
+  {path:'cardlist',component:CardListComponent},
+  {path:'todo',
+  loadChildren:()=>import('./todo/todo.module').then((m)=>m.TodoModule),
+}
 ];
 
 @NgModule({

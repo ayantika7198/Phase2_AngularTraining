@@ -37,6 +37,10 @@ import { EditFlowerComponent } from './flowers/edit-flower.component';
 import { GreetingComponent } from './greeting/greeting.component';
 import { CardComponent } from './cards/card.component';
 import { CardListComponent } from './cards/cardlist.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effect';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -83,8 +87,14 @@ import { CardListComponent } from './cards/cardlist.component';
     ReactiveFormsModule,
     HttpClientModule,
     InMemoryWebApiModule,
+    //EffectsModule.forRoot([AppEffects]),
+StoreModule.forRoot({}),
+    //have to create AppEffects
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument(),
     HttpClientInMemoryWebApiModule.forRoot(InMemoryEventDbService)
   ],
+  exports:[],
   providers: [],
   bootstrap: [AppComponent]
 })

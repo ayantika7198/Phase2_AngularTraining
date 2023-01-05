@@ -4,6 +4,7 @@ import { Animal } from "src/app/animals/animal";
 import { IEvent } from "src/app/events/event";
 import { IFlower } from "src/app/flowers/flower";
 import { Category, IProduct } from "src/app/products/product";
+import { Todo } from "../todo/todo";
 
 @Injectable({
     providedIn: 'root'
@@ -263,9 +264,21 @@ export class InMemoryEventDbService implements InMemoryDbService{
             "image": "../../assets/images/tulip.jpg",
             "quantity": 80
           }
+        ];
+
+        const todos:Todo[]=[
+          {
+            "id":"T001",
+            "content":"Todo 1"
+          },
+          {
+            "id":"T002",
+            "content":"Todo 2"
+          }
+
         ]
 
-        return {events,animals,flowers, products};
+        return {events,animals,flowers,todos, products};
     }
 
 }
