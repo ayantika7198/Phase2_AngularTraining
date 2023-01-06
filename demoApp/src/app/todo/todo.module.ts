@@ -18,7 +18,7 @@ import { todoReducer } from '../state/todos/todo.reducer';
   ],
   imports: [
     CommonModule, FormsModule, TodoPageRoutingModule,
-    StoreModule.forFeature('todo',todoReducer),
+    StoreModule.forFeature('todos',todoReducer),
     EffectsModule.forFeature(TodoEffects)
   ]
 })

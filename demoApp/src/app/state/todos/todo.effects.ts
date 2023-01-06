@@ -1,14 +1,17 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { mergeMap, map, catchError, of } from "rxjs";
+import { Store } from "@ngrx/store";
+import { mergeMap, map, catchError, of, withLatestFrom, switchMap, from } from "rxjs";
 import { ToDoService } from "src/app/todo/todo.service";
-import { loadTodos, LoadTodoSuccess, LoadTodoFailure } from "./todo.actions";
+import { loadTodos, LoadTodoSuccess, LoadTodoFailure, addTodo, removeTodo } from "./todo.actions";
+import { TodoState } from "./todos.state";
+import { getTodos } from "./todo.selectors";
 
 @Injectable()
 
 export class TodoEffects{
 
-constructor(private actions$:Actions,private todoService:ToDoService){}
+constructor(private actions$:Actions,private store:Store<TodoState>,private todoService:ToDoService){}
 //when the loadtodos action is dispatched .,, this effect is run
 
 loadTodos$= createEffect(()=>{
@@ -24,7 +27,17 @@ let err1 : string | any;
     ))
   )
 
+});
 
-
-})
+// Run this code when the addTodo or removeTodo action is dispatched
+   saveTodos$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(addTodo, removeTodo),
+        withLatestFrom(this.store.select(getTodos)),
+        switchMap(([action, todos]) => from(this.todoService.createTodo(todos[0])))
+      ),
+    // Most effects dispatch another action, but this one is just a "fire and forget" effect
+    { dispatch: false }
+  );
 }

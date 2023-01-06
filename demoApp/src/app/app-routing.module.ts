@@ -26,11 +26,10 @@ const routes: Routes = [
     path:'about',component:AppaboutComponent
   },
   {
-    path:'products',component:ProductListComponent,
-    canActivate:[AuthGuard],
-    children:[
-      {path:'addProduct',component:ProductAddComponent}
-    ]
+    path:'products',
+  component:ProductListComponent,
+  canActivate:[AuthGuard],
+  loadChildren:()=>import('../app/product/product.module').then(m=>m.ProductModule)
   },
   {
     path:'events',component:EventListComponent

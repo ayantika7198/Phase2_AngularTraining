@@ -1,163 +1,116 @@
-import { Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { LoggingService } from 'src/app/shared/logging.service';
-import { productService } from 'src/app/shared/productService';
-import { Category, IProduct } from './product';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from "@angular/core";
+import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { Subscription, Observable } from "rxjs";
+import { ProductService } from "../shared/productService";
+import { getProducts, getError, getCurrentProduct } from "../state/products/product.selector";
+import * as ProductActions from '../state/products/product.actions'
+import { IProduct } from "./product";
+import { State } from "../state/products/product.state";
 
 @Component({
-  selector: 'product-list',
+  selector: 'products-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit,OnDestroy{
+export class ProductListComponent implements OnInit ,OnDestroy {
+errorMessage:string='';
+sub!:Subscription;
+prod!:IProduct;
+products:IProduct[]=[];
+pageTitle:string="Product List "
+filteredProducts:IProduct[]=[];
+selectedProduct!:IProduct | null;
+filterValue!:string;
+href:string='';
 
-  name:string='';
+//******************** declared below are observables for which we will use async pipe in template , no sub/unsub*/
+products$!:Observable<IProduct[]>;
+selectedProduct$!:Observable<any>;
+errorMessage$!: Observable<string>;
 
-  sub!:Subscription;
+//*************** */
+dataReceived=this.productService.getProducts();
+obsProducts$!:Observable<IProduct[]>;
+@Output() OnProductSelection:EventEmitter<IProduct>=new EventEmitter<IProduct>();
 
-  products:IProduct[]=[];
-  filteredProducts:IProduct[]=[];
-  selectedProduct!:IProduct | null;
-  href:string='';
+  constructor(private productService:ProductService,
+    private router:Router,private store:Store<State>){ }
 
-  @Output() OnProductSelection:EventEmitter<IProduct>=new EventEmitter<IProduct>();
 
-  constructor(private productService:productService,
-    private loggingService:LoggingService, private router:Router){}
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
-  
   ngOnInit(): void {
     this.href=this.router.url;
+    // console.log(this.href);
+    // //sub object is initialized
+    //    this.obsProducts$=this.productService.getProducts();
+    //    /*.subscribe(
+    //      (response)=>{
 
-    this.sub=this.productService.getProducts().subscribe(
-      (response)=>{
-        for(let res of response){
-          let cat=res.category.indexOf(".");
-          let str=res.category.substring(cat+1);
-          let value!:Category;
-          //console.log(str);
-          //res.category=response.enumValue.toString();
-          //console.log(res.category);
-         // console.log(Category.shirt);
-         // console.log(Category[res.category]);
+    //      console.log(response);
+    //      this.products=response;
+    //      this.filteredProducts = this.products;
 
-         switch(str){
-           case 'jeans':
-             value=Category.jeans;
-             break;
-            case 'grocery':
-              value=Category.grocery;
-              break;
-            case 'shirt':
-              value=Category.shirt;
-              break;
-            case 'top':
-              value=Category.top;
-              break;
-            case 'food':
-              value=Category.food;
-              break;
-         }
+    //    },
+    //    err=>{this.errorMessage=err;
+    //     console.log(err);
+    //    }
+    //    );*/
 
+      //  console.log(this.selectedProduct);
+      //  this.productService.selectedProductChanges$.
+      //  subscribe(currentProduct=>{this.selectedProduct=currentProduct;
+      // });
+   // Do NOT subscribe here because it uses an async pipe
+    // This gets the initial values until the load is complete.
+    this.products$ = this.store.select(getProducts);
+    this.products$.subscribe(resp=>this.filteredProducts=resp);
+    // Do NOT subscribe here because it uses an async pipe
+    this.errorMessage$ = this.store.select(getError);
 
-          res.category=value;
-        }
-        this.products=response;
-        this.filteredProducts=this.products;
-        
-      },
-      (err)=>{
-        console.log(err);
-      }
-    )
-    //this.filteredProducts=this.products;
+    this.store.dispatch(ProductActions.loadProducts());
 
-    this.productService.selectedProductChanges$.
-       subscribe(currentProduct=>{this.selectedProduct=currentProduct;
-       console.log(this.selectedProduct);
-       });
+    // Do NOT subscribe here because it uses an async pipe
+    this.selectedProduct$ = this.store.select(getCurrentProduct);
+
+     }
+
+     ngOnDestroy(): void {
+       //this.sub.unsubscribe();
   }
 
-  //filteredProducts:IProduct[]=[];
-
-  showProducts():void{
-    this.loggingService.print(this.filteredProducts);
-  }
-selectedP!:IProduct|null;
-  print(product:IProduct):void{
-    
-    console.log(product);
-  }
-newP!:IProduct;
 
 
-  newProduct():void{
-  
-    console.log('in new product');
+   filterData(val:string){
 
-  this.productService.changeSelectedProduct(this.productService.newProduct());
-  console.log('back to newProduct from service ');
 
-   this.router.navigate([this.href,'addProduct']);
+
+
+    this.filteredProducts=this.products.filter((p)=>p.category===val);
   }
 
-  
-
-
-
-  _filCats:string="";
-  title:string="";
-
-  get filCats():string{
-    return  this._filCats;
-}
-
-set filCats(val:string){
-
- this._filCats=val;
-
- this.filteredProducts=this.filterData(val);
- 
-}
-
-  
-
-  //products:IProduct[]=this.productService.getProducts();
-
-  
-
-  pr:IProduct=this.products[0];
-
-
-
-
-  filterData(val:string):IProduct[]{
-    val=this.filCats;
-    return this.products.filter((prot:IProduct)=>prot.category.includes(val));
-  
-  
-  
-  }
 
   onRatingClicked(msg:string):void{
-    this.title='Called: ' +msg;
+    this.pageTitle='My Angular App ' +msg;
   }
 
-  map=new Map();
-  @Output() productClicked:EventEmitter<IProduct> =new EventEmitter<IProduct>();
+ onSelect(p:IProduct){
+  this.OnProductSelection.emit(p);
+ }
 
-  //pros:any='';
+newProduct():void{
+   console.log('in new product');
 
-  productSelected(product:IProduct):void{
-    this.productService.changeSelectedProduct(product);
-   }
-
-  onClick(prot:IProduct):void{
-    //this.pros.push()
-
-    this.productClicked.emit(prot);
+  // this.productService.changeSelectedProduct(this.productService.newProduct());
+  // console.log('back to newProduct from service ');
+  this.store.dispatch(ProductActions.initializeCurrentProduct());
+   this.router.navigate([this.href,'addProduct']);
+}
+ productSelected(product:IProduct):void{
+  //this.productService.changeSelectedProduct(product);
+this.store.dispatch(ProductActions.setCurrentProduct({currentProductId:product.id}));
+}
+  getProductById(id:number):IProduct{
+    this.productService.getProductById(id).subscribe(resp=>this.prod=resp);
+    return this.prod;
   }
 }

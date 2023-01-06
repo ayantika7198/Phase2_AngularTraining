@@ -16,9 +16,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let pr of prot">
-        <td *ngIf="pr.quantity">{{pr.name}}</td>
-        <td *ngIf="pr.quantity"><img [src]="pr.imageUrl" width="100px" height="80px"/></td>
-        <td *ngIf="pr.quantity">{{pr.quantity}}</td>
+        <td *ngIf="pr.qty">{{pr.name}}</td>
+        <td *ngIf="pr.qty"><img [src]="pr.image" width="100px" height="80px"/></td>
+        <td *ngIf="pr.qty">{{pr.qty}}</td>
       </tr>
    
     </tbody>

@@ -7,13 +7,13 @@
 
         <div class="card">
             <div class="card-header">
-              <button class="btn btn-primary btn2" (click)="showProducts()">SHOW</button>
-              {{title}}
+              <button class="btn btn-primary btn2">SHOW</button>
+              {{pageTitle}}
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroup-sizing-default">Filter By Category</span>
                     </div>
-                    <input type="text" class="form-control" [(ngModel)]="filCats" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="text" class="form-control" (keypress)="filterData(filterValue)"  [(ngModel)]="filterValue" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                   </div>
              
             </div>
@@ -34,14 +34,14 @@
                     <tbody>
                         <tr *ngFor="let product of filteredProducts">
                         
-                            <td (click)="print(product)">{{product.id}}</td>
+                            <td>{{product.id}}</td>
                             <td (click)="productSelected(product)">{{product.name | uppercase}}</td>
                             <td>{{product.price | currency:'INR'}}</td>
-                            <td><img src="{{product.imageUrl}}" width="50px" height="50px"/></td>
+                            <td><img src="{{product.image}}" width="50px" height="50px"/></td>
                             <td>{{product.category}}</td>
-                            <td><app-star-icon [rating]='product.rating' [message]='name' (ratingClicked)="onRatingClicked($event)"></app-star-icon></td>
-                            <td><input type="number" min=0 value="0" [(ngModel)]="product.quantity"/></td>
-                            <td><button class="btn btn-primary" (click)="onClick(product)">ADD</button></td>
+                            <td><app-star-icon [rating]='product.rating' (ratingClicked)="onRatingClicked($event)"></app-star-icon></td>
+                            <td><input type="number" min=0 value="0" [(ngModel)]="product.qty"/></td>
+                            <td><button class="btn btn-primary">ADD</button></td>
                           </tr>
                       
                     </tbody>

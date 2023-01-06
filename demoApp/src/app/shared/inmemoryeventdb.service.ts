@@ -5,6 +5,7 @@ import { IEvent } from "src/app/events/event";
 import { IFlower } from "src/app/flowers/flower";
 import { Category, IProduct } from "src/app/products/product";
 import { Todo } from "../todo/todo";
+import { IPlace } from "../tourism/place";
 
 @Injectable({
     providedIn: 'root'
@@ -142,75 +143,75 @@ export class InMemoryEventDbService implements InMemoryDbService{
         ];
 
         const products:IProduct[]=[{
-            "id": "P01",
+            "id": 100,
             "name": "Product1",
             "price": 2000,
-            "imageUrl": "../../assets/images/jeans.jpg",
+            "image": "../../assets/images/jeans.jpg",
             "category": Category.jeans,
-            "quantity": 0,
+            "qty": 0,
             "rating": 4
         
           },{
-            "id": "P02",
+            "id": 101,
             "name": "Product2",
             "price": 1000,
-            "imageUrl": "../../assets/images/grocery.jpg",
+            "image": "../../assets/images/grocery.jpg",
             "category": Category.grocery,
-            "quantity": 0,
+            "qty": 0,
             "rating": 3.5
         
           },{
-            "id": "P03",
+            "id": 102,
             "name": "Product3",
             "price": 3000,
-            "imageUrl": "../../assets/images/shirt.jpg",
+            "image": "../../assets/images/shirt.jpg",
             "category": Category.shirt,
-            "quantity": 0,
+            "qty": 0,
             "rating": 5
         
           },{
-            "id": "P04",
+            "id": 103,
             "name": "Product4",
             "price": 1500,
-            "imageUrl": "../../assets/images/top.jpg",
+            "image": "../../assets/images/top.jpg",
             "category": Category.top,
-            "quantity": 0,
+            "qty": 0,
             "rating": 3
         
           },{
-            "id": "P05",
+            "id": 104,
             "name": "Product5",
             "price": 1000,
-            "imageUrl": "../../assets/images/food.jpg",
+            "image": "../../assets/images/food.jpg",
             "category": Category.food,
-            "quantity": 0,
+            "qty": 0,
             "rating": 3.5
         
           },{
-            "id": "P06",
+            "id": 105,
             "name": "Product6",
             "price": 2000,
-            "imageUrl": "../../assets/images/food.jpg",
+            "image": "../../assets/images/food.jpg",
             "category": Category.food,
-            "quantity": 0,
+            "qty": 0,
             "rating": 3.5
         
           },{
-            "id": "P07",
+            "id": 106,
             "name": "Product7",
             "price": 3000,
-            "imageUrl": "../../assets/images/shirt.jpg",
+            "image": "../../assets/images/shirt.jpg",
             "category": Category.shirt,
-            "quantity": 0,
+            "qty": 0,
             "rating": 5
         
           },{
-            "id": "P08",
+            "id": 107,
             "name": "Product8",
             "price": 4000,
-            "imageUrl": "../../assets/images/jeans.jpg",
+            "image": "../../assets/images/jeans.jpg",
             "category": Category.jeans,
-            "quantity": 0,
+            "qty": 0,
             "rating": 4
         
           }];
@@ -276,6 +277,63 @@ export class InMemoryEventDbService implements InMemoryDbService{
             "content":"Todo 2"
           }
 
+        ]
+
+        const places:IPlace[]=[
+          {
+            "id":"T001",
+            "name":"Kolkata",
+            "imageUrl":"../../assets/images/kolkata.jpg",
+            "seats":50,
+            "price":6000,
+            "days":7,
+            "famous":"Victoria Memorial Hall"
+          },
+          {
+            "id":"T002",
+            "name":"Chennai",
+            "imageUrl":"../../assets/images/chennai.jpg",
+            "seats":40,
+            "price":10000,
+            "days":9,
+            "famous":"Shri Asthalaxmi Temple"
+          },
+          {
+            "id":"T003",
+            "name":"Delhi",
+            "imageUrl":"../../assets/images/delhi.jpg",
+            "seats":90,
+            "price":7000,
+            "days":5,
+            "famous":"India Gate"
+          },
+          {
+            "id":"T004",
+            "name":"Gujarat",
+            "imageUrl":"../../assets/images/gujarat.jpg",
+            "seats":40,
+            "price":15000,
+            "days":10,
+            "famous":"Ahmedabad"
+          },
+          {
+            "id":"T005",
+            "name":"Jaipur",
+            "imageUrl":"../../assets/images/jaipur.jpg",
+            "seats":80,
+            "price":12000,
+            "days":8,
+            "famous":"Hawa Mahal"
+          },
+          {
+            "id":"T006",
+            "name":"Kerala",
+            "imageUrl":"../../assets/images/kerala.jpg",
+            "seats":70,
+            "price":20000,
+            "days":18,
+            "famous":"Kochi"
+          }
         ]
 
         return {events,animals,flowers,todos, products};

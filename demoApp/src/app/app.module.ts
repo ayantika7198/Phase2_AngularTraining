@@ -8,9 +8,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { FlatlistComponent } from './flats/flatlist.component';
 import { AnimalListComponent } from './animals/animal-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductListComponent } from './products/product-list.component';
+//import { ProductListComponent } from './products/product-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StarIconComponent } from './star/star-icon.component';
+//import { StarIconComponent } from './star/star-icon.component';
 import { CartComponent } from './carts/cart.component';
 import { RepeatDataPipe } from './repeat-data.pipe';
 import { TransformDataPipe } from './transform-data.pipe';
@@ -29,7 +29,7 @@ import { AppnavComponent } from './appnav/appnav.component';
 import { ApphomeComponent } from './apphome/apphome.component';
 import { AppaboutComponent } from './appabout/appabout.component';
 import { AnimalDetailsComponent } from './animals/animal-details.component';
-import { ProductAddComponent } from './products/product-add.component';
+//import { ProductAddComponent } from './products/product-add.component';
 import { FlowerListComponent } from './flowers/flower-list.component';
 import { LoginComponent } from './users/login.component';
 import { AddFlowerComponent } from './flowers/add-flower.component';
@@ -54,8 +54,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
    WelcomeComponent,
    FlatlistComponent,
    AnimalListComponent,
-   ProductListComponent,
-   StarIconComponent,
+   //ProductListComponent,
+  // StarIconComponent,
    CartComponent,
    RepeatDataPipe,
    TransformDataPipe,
@@ -70,7 +70,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
    ApphomeComponent,
    AppaboutComponent,
    AnimalDetailsComponent,
-   ProductAddComponent,
+   //ProductAddComponent,
    FlowerListComponent,
    LoginComponent,
    AddFlowerComponent,
