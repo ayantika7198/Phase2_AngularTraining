@@ -5,31 +5,31 @@ import { initialState, PlaceState } from "./place.state";
 export const placeReducer= createReducer<PlaceState>(
     initialState,
 
-    on(PlaceActions.setCurrentPlace, (state,action): PlaceState =>{
+    on(PlaceActions.setCurrentPlace, (state, action): PlaceState =>{
         return {
             ...state,
             currentPlaceId:action.currentPlaceId
         };
     }),
 
-    on(PlaceActions.clearCurrentPlace, (state):PlaceState=>{
+    on(PlaceActions.clearCurrentPlace, (state): PlaceState=>{
         return {
             ...state,
             currentPlaceId: null
         };
     }),
 
-    on(PlaceActions.initializeCurrentPlace, (state):PlaceState=>{
+    on(PlaceActions.initializeCurrentPlace, (state): PlaceState=>{
         return {
             ...state,
-            currentPlaceId: 'T000'
+            currentPlaceId: ''
         };
     }),
 
-    on(PlaceActions.loadPlacesSuccess, (state, action):PlaceState=>{
+    on(PlaceActions.loadPlacesSuccess, (state, action): PlaceState=>{
         return {
             ...state,
-            places:[],
+            places: action.places,
             error: ''
         };
     }),

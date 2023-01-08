@@ -1,0 +1,9 @@
+.container{
+    width: 80%;
+    margin-top: 50px;
+    
+}
+.card1{
+    background-color: purple;
+    color: white;
+}

@@ -1,4 +1,4 @@
-import { state } from "@angular/animations";
+
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import * as AppState from "../app.state";
 import { PlaceState } from "./place.state";
@@ -14,7 +14,7 @@ export const getCurrentPlace=createSelector(
     getPlaceFeatureState,
     getCurrentPlaceId,
     (state, currentPlaceId)=>{
-        if(currentPlaceId==='T000'){
+        if(currentPlaceId===''){
             return {
                 id: '',
                 name : '',

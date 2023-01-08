@@ -1,0 +1,55 @@
+<div class="cont1" style="width: 100%; height: 550px; text-align: center;" *ngIf="cont1">
+  <img src="../../assets/images/homeTour.jpg" width="100%" height="500px" style="border:none; border-radius:25px; padding:20px;"/>
+  <button class="btn btn-secondary" (click)="show()">EXPLORE AVAILABLE PACKAGES</button>
+</div>
+<div class="container" *ngIf="cont2">
+<div class="card text-center card1">
+    <div class="card-header" style="font-size: 25px; font-weight: bold;">
+      {{ pageTitle }}
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-danger table-striped">
+            <thead>
+              <tr>
+                <th scope="col">PLACE ID</th>
+                <th scope="col">PLACE NAME</th>
+                <th scope="col">PLACE SCENARIO</th>
+                <th scope="col">DAYS</th>
+                <th scope="col">SEATS AVAILABLE</th>
+                <th scope="col">TOTAL COST PER PERSON</th>
+                <th scope="col">POINT OF ATTRACTION</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pl of places">
+                <td>{{pl.id}}</td>
+                <td>{{pl.name}}</td>
+                <td><img [src]="pl.imageUrl" width="100px" height="80px"/></td>
+                <td>{{pl.days}}</td>
+                <td>{{pl.seats}}</td>
+                <td>{{pl.price}}</td>
+                <td>{{pl.famous}}</td>
+                <td> <button class="btn btn-warning" (click)="placeSelected(pl)">Edit</button></td>
+                <td><button class="btn btn-danger" (click)="deletePlace(pl)">DELETE</button></td>
+              </tr>
+              
+            </tbody>
+          </table>
+      
+    </div>
+    <div>
+      <button class="btn btn-primary" style="margin-bottom: 10px;" (click)="newPlace()">ADD A NEW PLACE</button>
+    </div>
+
+    <div>
+      <button class="btn btn-warning" style="margin-bottom: 10px;" (click)="hide()">BACK TO HOME</button>
+    </div>
+    
+    <div class="card-footer text-muted">
+      Updated 2 days ago
+    </div>
+  </div>
+  </div>
+  <router-outlet></router-outlet>

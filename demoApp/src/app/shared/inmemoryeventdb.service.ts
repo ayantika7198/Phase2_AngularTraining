@@ -336,7 +336,7 @@ export class InMemoryEventDbService implements InMemoryDbService{
           }
         ]
 
-        return {events,animals,flowers,todos, products};
+        return {events,animals,flowers,todos,places, products};
     }
 
 }

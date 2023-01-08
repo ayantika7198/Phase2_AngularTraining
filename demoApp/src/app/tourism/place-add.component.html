@@ -1,0 +1,58 @@
+<div class="container">
+<div class="card">
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+    <div class="card-body">
+      <form [formGroup]="addPlace" (ngSubmit)="savePlace(place)">
+        <div class="form-group row">
+            <label for="id" class="col-sm-2 col-form-label col-form-label-lg">PLACE ID</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-lg" id="id" name="id" formControlName="id" placeholder="Place Id">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label col-form-label-lg">PLACE NAME</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-lg" id="name" name="name" formControlName="name" placeholder="Place Name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="imageUrl" class="col-sm-2 col-form-label col-form-label-lg">PLACE IMAGE</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-lg" id="imageUrl" name="imageUrl" formControlName="imageUrl" placeholder="Place Image Url">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="seats" class="col-sm-2 col-form-label col-form-label-lg">AVAILABLE SEATS</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control form-control-lg" id="seats" name="seats" formControlName="seats" placeholder="Enter Available seats">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="days" class="col-sm-2 col-form-label col-form-label-lg">DAYS</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control form-control-lg" id="days" name="days" formControlName="days" placeholder="Enter Number of Days">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="price" class="col-sm-2 col-form-label col-form-label-lg">COST PER PERSON</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control form-control-lg" id="price" name="price" formControlName="price" placeholder="Enter Cost Per Person">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="famous" class="col-sm-2 col-form-label col-form-label-lg">FAMOUS PLACE</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-lg" id="famous" name="famous" formControlName="famous" placeholder="Enter Famous Place">
+            </div>
+          </div>
+
+          <div>
+              <button [disabled]='!addPlace.valid ||!addPlace.dirty' class="btn btn-info">SAVE PLACE</button>
+          </div>
+      </form>
+    </div>
+  </div>
+  </div>
+  <router-outlet></router-outlet>

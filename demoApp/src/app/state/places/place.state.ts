@@ -12,7 +12,7 @@ export interface PlaceState{
 }
 
 export const initialState:PlaceState={
-    currentPlaceId: "T000",
+    currentPlaceId: null,
     places:[],
     error:''
 }

@@ -13,6 +13,7 @@ import { EditFlowerComponent } from './flowers/edit-flower.component';
 import { FlowerListComponent } from './flowers/flower-list.component';
 import { ProductAddComponent } from './products/product-add.component';
 import { ProductListComponent } from './products/product-list.component';
+import { PlaceListComponent } from './tourism/place-list.component';
 import { AuthGuard } from './users/auth-guard.service';
 import { LoginComponent } from './users/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -51,6 +52,12 @@ const routes: Routes = [
   {path:'cardlist',component:CardListComponent},
   {path:'todo',
   loadChildren:()=>import('./todo/todo.module').then((m)=>m.TodoModule),
+},
+{
+  path:'tour',
+component:PlaceListComponent,
+canActivate:[AuthGuard],
+loadChildren:()=>import('./place/place.module').then(m=>m.PlaceModule)
 }
 ];
 
