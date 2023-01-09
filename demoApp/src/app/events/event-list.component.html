@@ -11,10 +11,85 @@
   <div class="card-group">
     
   
-    <div class="card text-center" *ngFor="let ev of events" style="background-color: pink; border-radius: 25px; margin:20px">
+    <!--<div class="card text-center" *ngFor="let ev of events" style="background-color: pink; border-radius: 25px; margin:20px">
     
      <app-event-details [event]="ev"></app-event-details>
-    </div>
+    </div>-->
+
+    <mat-card class="example-card" *ngFor="let ev of events; let i=index" style="background-color: pink; border-radius: 25px; margin:20px"> 
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>{{ev.name}}</mat-card-title>
+          <mat-card-subtitle>{{ev.location.city}}</mat-card-subtitle>
+          <img mat-card-xl-image [src]="ev.imageUrl" style="margin:20px; padding:20px;" 
+            (click)="applyAnimation(i)" 
+            [@change]="isClick[i] ? 'end' : 'start'"
+          >
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <app-event-details [event]="ev"></app-event-details>
+      </mat-card-content>
+    </mat-card>
   </div>
+  <div>
+    <button mat-raised-button color="accent" style="margin: 40px;" (click)="show()">ADD EVENT</button>
+  </div>
+
+
+<div class="eventform" *ngIf="cont">
+
+  <form [formGroup]="addEvent">
+
+  <div class="example-container">
+    <mat-form-field hintLabel="Max 4 characters" appearance="fill" class="full-width-field">
+      <mat-label>Enter Event ID</mat-label>
+      <input matInput #id maxlength="4" placeholder="Ex. E001" name="id" formControlName="id"/>
+      <mat-hint align="end">{{id.value.length}}/4</mat-hint>
+    </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field hintLabel="Max 10 characters" appearance="fill" class="full-width-field">
+        <mat-label>Enter Event Name</mat-label>
+        <input matInput #name maxlength="10" placeholder="Ex. Singing" name="name" formControlName="name" />
+        <mat-hint align="end">{{name.value.length}}/10</mat-hint>
+      </mat-form-field>
+      </div>
+
+      <!--<div class = "calendar-wrapper">
+      <mat-calendar #calendar [(selected)] = "startDate">
+        </mat-calendar>
+</div>-->
+<mat-form-field appearance="fill">
+  <mat-label>Choose a date</mat-label>
+  <input name="date" formControlName="date" matInput [matDatepicker]="picker">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+</mat-form-field>
+
+      
+
+      <div class="example-container">
+        <mat-form-field hintLabel="Max 15 characters" appearance="fill" class="full-width-field">
+          <mat-label>Enter Event Venue</mat-label>
+          <input matInput #venue maxlength="15" placeholder="Ex. Kolkata" name="venue" formControlName="venue"/>
+          <mat-hint align="end">{{venue.value.length}}/15</mat-hint>
+        </mat-form-field>
+        </div>
+
+        <div class="example-container">
+          <mat-form-field hintLabel="Max 15 characters" appearance="fill" class="full-width-field">
+            <mat-label>Enter Event Session Name</mat-label>
+            <input matInput #sess maxlength="15" placeholder="Ex. Session 1"/>
+            <mat-hint align="end">{{sess.value.length}}/15</mat-hint>
+          </mat-form-field>
+          </div>
+
+        </form>
+        </div>
+
+
   </body>
   </html>

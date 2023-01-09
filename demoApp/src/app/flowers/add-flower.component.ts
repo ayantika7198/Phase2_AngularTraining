@@ -23,9 +23,9 @@ export class AddFlowerComponent implements OnInit,OnDestroy{
   ngOnInit(): void {
     this.addFlower=this.formBuilder.group({
       id:['',[Validators.required]],
-      name:['',[Validators.required]],
+      name:['',[Validators.required, Validators.minLength(2), Validators.maxLength(15)]],
       place:['',[Validators.required]],
-      price:[0,[Validators.required]],
+      price:[0,[Validators.required, Validators.min(0), Validators.max(30000)]],
       image:[''],
       quantity:[0,[Validators.required]]
     });

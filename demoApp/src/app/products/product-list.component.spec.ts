@@ -1,7 +1,6 @@
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { productService } from 'src/app/shared/productService';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import {HttpClientModule} from '@angular/common/http';
@@ -17,7 +16,7 @@ describe('ProductListComponent', () => {
       declarations: [ ProductListComponent ],
       schemas: [NO_ERRORS_SCHEMA],
       imports: [HttpClientTestingModule],
-      providers:[productService]
+      providers:[]
     })
     .compileComponents();
 

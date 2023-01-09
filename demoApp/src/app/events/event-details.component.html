@@ -1,7 +1,7 @@
-<h5 class="card-title">{{event?.name}}</h5>
+
 <p class="card-text">{{event?.date}}</p>
 <p class="card-text">{{event?.time}}</p>
-<img [src]="event?.imageUrl" width="300px" height="200px"/>
+
 <p>
 <button class="btn btn-primary" (click)="show()">Show More</button>
 </p>
@@ -17,4 +17,3 @@
 </div>
 </div>
 
-<div id="data">{{event|json}}</div>

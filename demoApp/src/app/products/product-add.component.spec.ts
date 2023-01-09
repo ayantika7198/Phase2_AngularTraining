@@ -3,6 +3,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { MaterialExampleModule } from 'src/material.module';
 
 import { ProductAddComponent } from './product-add.component';
 
@@ -30,7 +31,7 @@ describe('ProductAddComponent', () => {
   });
 
   it('should have the product name',()=>{
-    expect(component.ngForm.controls['name']).toBeTruthy();
+    expect(fixture.debugElement.query(By.css('#name'))).toBeTruthy();
   });
   it('should have the product price',()=>{
     expect(fixture.debugElement.query(By.css('#price'))).toBeTruthy();

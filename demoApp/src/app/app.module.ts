@@ -41,6 +41,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effect';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MaterialExampleModule } from 'src/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 
@@ -84,7 +86,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     NgbModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
+    MaterialExampleModule,
     HttpClientModule,
     InMemoryWebApiModule,
     //EffectsModule.forRoot([AppEffects]),

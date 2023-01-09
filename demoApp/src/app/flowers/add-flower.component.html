@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
         <form [formGroup]="addFlower" (ngSubmit)="saveFlower(flower)">
-        <div class="form-group row">
+       <!--<div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label col-form-label-lg">FLOWER ID</label>
             <div class="col-sm-10">
               <input type="text" class="form-control form-control-lg" id="id" name="id" formControlName="id" placeholder="Enter Flower ID">
@@ -40,9 +40,52 @@
             <div class="col-sm-10">
               <input type="number" class="form-control form-control-lg" id="quantity" name="quantity" formControlName="quantity" placeholder="Enter Quantity of Flowers Available">
             </div>
-          </div>
+          </div>-->
 
-          <button [disabled]='!addFlower.valid ||!addFlower.dirty' class="btn btn-success">SAVE</button>
+          <div class="example-container">
+            <mat-form-field hintLabel="Max 4 characters" appearance="fill" class="full-width-field">
+              <mat-label>Enter Flower ID</mat-label>
+              <input matInput #id maxlength="4" placeholder="Ex. F001" name="id" formControlName="id" class="id"/>
+              <mat-hint align="end">{{id.value.length}}/4</mat-hint>
+            </mat-form-field>
+            </div>
+            <div class="example-container">
+              <mat-form-field hintLabel="Max 15 characters" appearance="fill" class="full-width-field">
+                <mat-label>Enter Flower Name</mat-label>
+                <input matInput #name maxlength="15" placeholder="Ex. Rose" name="name" formControlName="name" class="name"/>
+                <mat-hint align="end">{{name.value.length}}/15</mat-hint>
+              </mat-form-field>
+              </div>
+              <div class="example-container">
+                <mat-form-field hintLabel="Max 20 characters" appearance="fill" class="full-width-field">
+                  <mat-label>Enter Place</mat-label>
+                  <input matInput #place maxlength="20" placeholder="Ex. Kolkata" name="place" formControlName="place" class="place"/>
+                  <mat-hint align="end">{{place.value.length}}/20</mat-hint>
+                </mat-form-field>
+                </div>
+                <div class="example-container">
+                  <mat-form-field appearance="fill" class="full-width-field">
+                    <mat-label>Enter Flower Price</mat-label>
+                    <input matInput #price max="30000" placeholder="Ex. 2000" name="price" formControlName="price" class="price"/>
+                    
+                  </mat-form-field>
+                  </div>
+                  <div class="example-container">
+                    <mat-form-field hintLabel="Max 60 characters" appearance="fill" class="full-width-field">
+                      <mat-label>Enter Flower Image URL</mat-label>
+                      <input matInput #image maxlength="60" placeholder="Ex. ./url" name="image" formControlName="image" class="image"/>
+                      <mat-hint align="end">{{image.value.length}}/60</mat-hint>
+                    </mat-form-field>
+                    </div>
+                    <div class="example-container">
+                      <mat-form-field  appearance="fill" class="full-width-field">
+                        <mat-label>Enter Flower Quantity</mat-label>
+                        <input matInput #quantity max="60" placeholder="Ex. 10" name="quantity" formControlName="quantity" class="quantity"/>
+                        <mat-hint align="end">{{quantity.value.length}}/60</mat-hint>
+                      </mat-form-field>
+                      </div>
+
+          <button id="btn1" [disabled]='!addFlower.valid ||!addFlower.dirty' class="btn btn-success">SAVE</button>
           </form>
     </div>
     
