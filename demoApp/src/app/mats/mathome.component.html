@@ -1,0 +1,79 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="manager()">MANAGERS</a>
+      <a mat-list-item (click)="user()">USERS</a>
+      <a mat-list-item (click)="products()">PRODUCTS</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>demoApp</span>
+    </mat-toolbar>
+   
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!--
+<div class="container">
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-subtitle>Know About Your Managers</mat-card-subtitle>
+      <mat-card-title>MANAGERS</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="manager()">Click Here</button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-subtitle>Know More About Users</mat-card-subtitle>
+      <mat-card-title>USERS</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="user()">Click Here</button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-subtitle>Know More About Our Products</mat-card-subtitle>
+      <mat-card-title>PRODUCTS</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="products()">Click Here</button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</div>-->
+<router-outlet></router-outlet>

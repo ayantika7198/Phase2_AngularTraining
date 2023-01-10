@@ -1,3 +1,4 @@
+import { RtlScrollAxisType } from '@angular/cdk/platform';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -35,24 +36,9 @@ export class AddFlowerComponent implements OnInit,OnDestroy{
 
   }
 
-  displayFlower(flowerParam:IFlower|null){
-    this.flower=flowerParam;
-    if(this.flower){
-      this.addFlower.reset();
-
-      this.addFlower.patchValue({
-        id:this.flower.id,
-        name:this.flower.name,
-        place:this.flower.place,
-        price:this.flower.price,
-        image:this.flower.image,
-        quantity:this.flower.quantity
-      })
+  public myError = (controlName: string, errorName: string) =>{
+    return this.addFlower.controls[controlName].hasError(errorName);
     }
-  }
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
 
   get id(){
     return this.addFlower.get("id");
@@ -77,6 +63,27 @@ export class AddFlowerComponent implements OnInit,OnDestroy{
   get quantity(){
     return this.addFlower.get("quantity");
   }
+
+  displayFlower(flowerParam:IFlower|null){
+    this.flower=flowerParam;
+    if(this.flower){
+      this.addFlower.reset();
+
+      this.addFlower.patchValue({
+        id:this.flower.id,
+        name:this.flower.name,
+        place:this.flower.place,
+        price:this.flower.price,
+        image:this.flower.image,
+        quantity:this.flower.quantity
+      })
+    }
+  }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  
 
   saveFlower(originalFlower:IFlower | null):void{
     if(this.addFlower.valid){

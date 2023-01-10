@@ -11,6 +11,8 @@ import { EventListComponent } from './events/event-list.component';
 import { AddFlowerComponent } from './flowers/add-flower.component';
 import { EditFlowerComponent } from './flowers/edit-flower.component';
 import { FlowerListComponent } from './flowers/flower-list.component';
+import { MathomeComponent } from './mats/mathome.component';
+import { ToolbarComponent } from './mats/toolbar.component';
 import { ProductAddComponent } from './products/product-add.component';
 import { ProductListComponent } from './products/product-list.component';
 import { PlaceListComponent } from './tourism/place-list.component';
@@ -58,6 +60,12 @@ const routes: Routes = [
 component:PlaceListComponent,
 canActivate:[AuthGuard],
 loadChildren:()=>import('./place/place.module').then(m=>m.PlaceModule)
+},
+{path:'mat',component:ToolbarComponent,
+loadChildren:()=>import('./mats/mat-module.module').then(m=>m.MatModuleModule)
+},
+{path:'mathome',component:MathomeComponent,
+loadChildren:()=>import('./mats/mat-module.module').then(m=>m.MatModuleModule)
 }
 ];
 

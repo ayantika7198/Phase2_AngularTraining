@@ -42,7 +42,15 @@ import { AppEffects } from './app.effect';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MaterialExampleModule } from 'src/material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialnavComponent } from './materialnav/materialnav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+
 
 
 
@@ -79,7 +87,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
    EditFlowerComponent,
    GreetingComponent,
    CardComponent,
-   CardListComponent
+   CardListComponent,
+   MaterialnavComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +105,13 @@ StoreModule.forRoot({}),
     //have to create AppEffects
     EffectsModule.forRoot([AppEffects]),
     StoreDevtoolsModule.instrument(),
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryEventDbService)
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryEventDbService),
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   exports:[],
   providers: [],

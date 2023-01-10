@@ -1,0 +1,27 @@
+<p>
+    <mat-toolbar color="primary">
+      <span>My Application</span>
+    </mat-toolbar>
+  </p>
+  
+  <div class="cont2" *ngIf="cont">
+         <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>USERNAME</mat-label>
+        <input matInput placeholder="Ex. name" value="Ayantika">
+      </mat-form-field>
+      </form>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>PASSWORD</mat-label>
+          <input matInput placeholder="Ex. password" value="password">
+        </mat-form-field>
+        </form>
+        
+        <div>
+        <button mat-raised-button color="primary" (click)="navigateHome()">LOGIN</button>
+</div>
+</div>
+      
+  
+  <router-outlet></router-outlet>
